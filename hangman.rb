@@ -1,11 +1,13 @@
 class Hangman
-    attr_accessor :word, :blanks, :guessed_letters, :letter_array, :guess, :winner
+    attr_accessor :word, :blanks, :guessed_letters, :letter_array, :guess, :winner, :already_guessed, :guesses
 
     def initialize (word)
         @word = word
         @blanks = "_"*word.length
         @guessed_letters = []
         @guess = guess
+        @guesses = 0
+        
     end
 
     def word_include?(guess)
@@ -29,6 +31,18 @@ class Hangman
     def winner?
         @blanks == word
     end
+
+    def already_guessed?(guess)
+        @guessed_letters.include?(guess)
+    end
+
+    def looser?
+        guesses == 6
+    end
+
+
+
+
 
 
 

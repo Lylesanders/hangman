@@ -63,8 +63,23 @@ class TestHangman < Minitest::Test  	#create template for test
 
     def test_already_guessed
          game = Hangman.new("beer")
-         game.already_guessed
-         assert_equal(true, game.already_guessed)
+         game.guessed_letters =["o"]
+         assert_equal(true, game.already_guessed?("o"))
+    end
+    def test_game_looser_true?
+        game = Hangman.new("beer")
+        game.guesses = 6
+        assert_equal(true, game.looser?)
+
+    end
+
+
+
+    def test_game_looser_false?
+        game = Hangman.new("beer")
+        game.guesses = 5
+        assert_equal(false, game.looser?)
+
     end
         
 

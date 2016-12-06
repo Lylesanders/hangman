@@ -10,4 +10,6 @@ class ConsoleHangman
         @guess = guess
     end
 
+    def get_word
+
     end #class
