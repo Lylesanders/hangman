@@ -60,6 +60,12 @@ class TestHangman < Minitest::Test  	#create template for test
          game.update_blanks("r")
          assert_equal(true, game.winner?)
     end
+
+    def test_already_guessed
+         game = Hangman.new("beer")
+         game.already_guessed
+         assert_equal(true, game.already_guessed)
+    end
         
 
 

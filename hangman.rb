@@ -5,7 +5,6 @@ class Hangman
         @word = word
         @blanks = "_"*word.length
         @guessed_letters = []
-        #@letter_array = []
         @guess = guess
     end
 
