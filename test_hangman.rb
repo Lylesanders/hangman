@@ -28,16 +28,39 @@ class TestHangman < Minitest::Test  	#create template for test
         assert_equal([], game.guessed_letters)
      end
 
-    def test_letters_sepperated_in_array
+     def test_guessed_letter_goes_into_guessed_letter_array
         game = Hangman.new("beer")
-        assert_equal(["b","e","e","r"], game.letter_array("beer"))
+        game.make_guess("a")
+        game.make_guess("z")
+        assert_equal(["a","z"], game.guessed_letters )
+     end
+
+     def test_update_blanks
+        game = Hangman.new("beer")
+        game.update_blanks("b")
+        assert_equal("b___", game.blanks)
+     end
+
+     def test_update_2_es
+        game = Hangman.new("beer")
+        game.update_blanks("e")
+        assert_equal("_ee_", game.blanks)
     end
 
-    #  def test_guessed_letters_into_array
-    #     game = Hangman.new("beer")
-    #     assert_equal(["b___"], game.letter_array)
-    #  end
+    def test_update_2_es
+        game = Hangman.new("whiskey")
+        game.update_blanks("e")
+        assert_equal("_____e_", game.blanks)
+    end 
 
+    def test_for_winner
+         game = Hangman.new("beer")
+         game.update_blanks("b")
+         game.update_blanks("e")
+         game.update_blanks("r")
+         assert_equal(true, game.winner?)
+    end
+        
 
 
 
